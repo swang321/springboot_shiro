@@ -1,11 +1,11 @@
 # dev
 
 server:
-  port: 8080
+  port: 8089
 
 logging:
   level:
-    com.dabo.game.moon.dao:
+    com.whh.demo.dao:
       debug
 
 spring:
@@ -44,7 +44,7 @@ mybatis:
   # 映射文件所在路径
   mapper-locations: classpath:mappers/*.xml
   # pojo类所在包路径
-  type-aliases-package: com.dabo.game.moon.pojo
+  type-aliases-package: com.whh.demo.pojo
 
 
 # 分页插件
