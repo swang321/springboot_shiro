@@ -14,6 +14,7 @@
 		<module>core</module>
 		<module>dao</module>
 		<module>service</module>
+		<module>config</module>
 	</modules>
 
 	<name>demo</name>
