@@ -3,7 +3,6 @@ package com.whh.controller;
 import com.whh.base.common.ServerResponse;
 import com.whh.bean.dto.LoginDTO;
 import com.whh.bean.dto.RegisterDTO;
-import com.whh.dao.UserMapper;
 import com.whh.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;

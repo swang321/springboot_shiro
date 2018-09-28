@@ -52,6 +52,11 @@ public enum ResponseEnum {
      * 登录失败
      */
     LOGIN_ERROR(7, "登录失败"),
+
+    /**
+     * 服务器错误
+     */
+    UNKONW_ERROR(250, "抱歉, 服务器开小差去了"),
     ;
 
 

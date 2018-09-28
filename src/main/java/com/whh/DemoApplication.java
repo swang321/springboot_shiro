@@ -1,4 +1,4 @@
-package com.whh.core;
+package com.whh;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
