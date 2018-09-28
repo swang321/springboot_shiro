@@ -53,16 +53,5 @@ pagehelper:
   reasonable: false
   supportMethodsArguments: true
   params: count=countSql
-  returnPageInfo: check
 
 
-# 机器id，数据中心id
-snowflake:
-  idworker:
-    workerId: 1
-    datacenterId: 0
-    twepoch: 1420041600000
-    workerIdBits: 5
-    datacenterIdBits: 5
-    sequence: 0
-    lastTimestamp: -1
