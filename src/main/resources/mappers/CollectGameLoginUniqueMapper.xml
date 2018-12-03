@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whh.dao.CollectGameLoginUniqueMapper">
+  <resultMap id="BaseResultMap" type="com.whh.bean.pojo.CollectGameLoginUnique">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="app_id" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="channel_id" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="login_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="device_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, app_id, channel_id, login_time, device_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from collect_game_login_unique
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from collect_game_login_unique
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.whh.bean.pojo.CollectGameLoginUnique">
+    insert into collect_game_login_unique (id, user_id, app_id, 
+      channel_id, login_time, device_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{appId,jdbcType=SMALLINT}, 
+      #{channelId,jdbcType=SMALLINT}, #{loginTime,jdbcType=TIMESTAMP}, #{deviceId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whh.bean.pojo.CollectGameLoginUnique">
+    insert into collect_game_login_unique
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=SMALLINT},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=SMALLINT},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whh.bean.pojo.CollectGameLoginUnique">
+    update collect_game_login_unique
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=SMALLINT},
+      </if>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=SMALLINT},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whh.bean.pojo.CollectGameLoginUnique">
+    update collect_game_login_unique
+    set user_id = #{userId,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=SMALLINT},
+      channel_id = #{channelId,jdbcType=SMALLINT},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      device_id = #{deviceId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
