@@ -28,7 +28,7 @@
         <!-- 日志滚动策略 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 日志文件的输出路径 -->
-            <fileNamePattern>D:\Apache\apache-tomcat-9.0.8\apache-tomcat-9.0.8\logs\dabo\info.%d.log
+            <fileNamePattern>C:\whh_logs\test_demo\info.%d.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
@@ -48,7 +48,7 @@
         <!-- 日志滚动策略 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 日志文件的输出路径 -->
-            <fileNamePattern>D:\Apache\apache-tomcat-9.0.8\apache-tomcat-9.0.8\logs\dabo\error.%d.log
+            <fileNamePattern>C:\whh_logs\test_demo\error.%d.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>

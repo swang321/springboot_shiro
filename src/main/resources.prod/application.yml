@@ -21,7 +21,7 @@ spring:
       #配置基本属性
       url: jdbc:mysql://localhost:3306/swang?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
-      password: password
+      password: 123456
       #配置初始化大小/最小/最大
       initial-size: 1
       min-idle: 1
@@ -55,14 +55,3 @@ pagehelper:
   params: count=countSql
   returnPageInfo: check
 
-
-# 机器id，数据中心id
-snowflake:
-  idworker:
-    workerId: 1
-    datacenterId: 0
-    twepoch: 1420041600000
-    workerIdBits: 5
-    datacenterIdBits: 5
-    sequence: 0
-    lastTimestamp: -1
