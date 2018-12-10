@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PreDestroy;
+
 /**
  * @ProjectName: swang
  * @Author: swang
@@ -49,5 +51,12 @@ public class UserController {
     public ServerResponse register(@RequestBody RegisterDTO registerDTO) {
         return userService.register(registerDTO);
     }
+
+    @PreDestroy
+    public void ster(){
+        System.out.println("-------------------------------------------------");
+    }
+
+
 
 }

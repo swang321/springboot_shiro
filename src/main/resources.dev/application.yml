@@ -21,7 +21,7 @@ spring:
       #配置基本属性
       url: jdbc:mysql://localhost:3306/swang?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
-      password: root
+      password: 123456
       #配置初始化大小/最小/最大
       initial-size: 1
       min-idle: 1
@@ -54,4 +54,17 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /myboot
+  server:
+    port: 9091
+    address: 127.0.0.1
 

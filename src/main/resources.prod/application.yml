@@ -1,4 +1,4 @@
-# dev
+# prod
 
 server:
   port: 8089
@@ -55,3 +55,19 @@ pagehelper:
   params: count=countSql
   returnPageInfo: check
 
+# 停止springboot项目   不是杀死进程的方式
+# 表示本地端口 9091 路径为 myboot 才可以关闭此服务   端口路径根据需求配置  只有本地才可以操作
+
+# curl -X POST localhost:9091/myboot/shutdown
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /myboot
+  server:
+    port: 9091
+    address: 127.0.0.1
