@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whh.dao.PermissionMapper">
+  <resultMap id="BaseResultMap" type="com.whh.bean.pojo.Permission">
+    <constructor>
+      <idArg column="permission_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="permission" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="resource_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="parentId" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    permission_id, url, permission, resource_type, parentId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from permission
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.whh.bean.pojo.Permission">
+    insert into permission (permission_id, url, permission, 
+      resource_type, parentId)
+    values (#{permissionId,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, 
+      #{resourceType,jdbcType=INTEGER}, #{parentid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whh.bean.pojo.Permission">
+    insert into permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionId != null">
+        permission_id,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="resourceType != null">
+        resource_type,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null">
+        #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whh.bean.pojo.Permission">
+    update permission
+    <set>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null">
+        resource_type = #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whh.bean.pojo.Permission">
+    update permission
+    set url = #{url,jdbcType=VARCHAR},
+      permission = #{permission,jdbcType=VARCHAR},
+      resource_type = #{resourceType,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=VARCHAR}
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectBysRoleId" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from permission
+    where role_id=#{roleId}
+  </select>
+
+  <select id="loadMenu" parameterType="map" resultMap="BaseResultMap">
+       select p.permission_id, p.url, p.permission, p.resource_type, p.parentId
+    from permission p left join role_permission rp
+    on p.permission_id=rp.permission_id
+    left join user_role ur
+    on rp.role_id=ur.role_id
+    where user_id=#{userId} and p.resource_type= #{resourceType}
+  </select>
+</mapper>
