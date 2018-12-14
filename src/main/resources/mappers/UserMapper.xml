@@ -7,11 +7,11 @@
       <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="state" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, username, name, password, state
+    user_id, username, name, password, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -25,9 +25,9 @@
   </delete>
   <insert id="insert" parameterType="com.whh.bean.pojo.User">
     insert into user (user_id, username, name, 
-      password, state)
+      password, status)
     values (#{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+      #{password,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.whh.bean.pojo.User">
     insert into user
@@ -44,8 +44,8 @@
       <if test="password != null">
         password,
       </if>
-      <if test="state != null">
-        state,
+      <if test="status != null">
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -61,8 +61,8 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="state != null">
-        #{state,jdbcType=VARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -78,8 +78,8 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="state != null">
-        state = #{state,jdbcType=VARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
@@ -89,7 +89,7 @@
     set username = #{username,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      state = #{state,jdbcType=VARCHAR}
+      status = #{status,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 
@@ -98,5 +98,18 @@
     <include refid="Base_Column_List"/>
     from user
     where username =#{username}
+  </select>
+  <select id="findAll" parameterType="com.whh.bean.pojo.User" resultType="com.whh.bean.pojo.User">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    <where>
+      <if test="username != null and username != ''">
+        AND username = #{username}
+      </if>
+      <if test="status != null and status != ''">
+        <![CDATA[ AND status = #{status} ]]>
+      </if>
+    </where>
   </select>
 </mapper>

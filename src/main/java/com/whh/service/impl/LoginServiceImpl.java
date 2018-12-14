@@ -1,5 +1,7 @@
 package com.whh.service.impl;
 
+import com.whh.base.common.ServerResponse;
+import com.whh.base.common.enums.ResponseEnum;
 import com.whh.service.ILoginService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -20,10 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 @Service
 public class LoginServiceImpl implements ILoginService {
     @Override
-    public boolean login(String username, String password, HttpServletRequest request) {
+    public ServerResponse login(String username, String password, HttpServletRequest request) {
         boolean flag = false;
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-            return flag;
+          return ServerResponse.createByErrorMsg(ResponseEnum.LOGIN_ERROR);
         }
 
 //        获取Subject实例对象
@@ -33,25 +35,20 @@ public class LoginServiceImpl implements ILoginService {
         // 传到MyAuthorizingRealm类中的方法进行认证
         try {
             currentUser.login(token);
-            flag = true;
-            return flag;
-
+            return ServerResponse.createBySuccessMsg(ResponseEnum.SUCCESS);
         } catch (UnknownAccountException e) {
             token.clear();
             e.printStackTrace();
-            request.setAttribute("msg", "未知错误！");
-            return flag;
+            return ServerResponse.createByErrorMsg(ResponseEnum.LOGIN_ERROR);
 
         } catch (IncorrectCredentialsException e) {
             token.clear();
-            request.setAttribute("msg", "暂时无法登陆！");
-            return flag;
+            return ServerResponse.createByErrorMsg(ResponseEnum.LOGIN_ERROR);
 
         } catch (AuthenticationException e) {
             token.clear();
             e.printStackTrace();
-            request.setAttribute("msg", "用户或密码不正确！");
-            return flag;
+            return ServerResponse.createByErrorMsg(ResponseEnum.LOGIN_ERROR);
         }
     }
 

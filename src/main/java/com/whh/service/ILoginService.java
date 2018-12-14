@@ -1,5 +1,7 @@
 package com.whh.service;
 
+import com.whh.base.common.ServerResponse;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -8,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface ILoginService {
 
-    boolean login(String username, String password, HttpServletRequest request);
+    ServerResponse login(String username, String password, HttpServletRequest request);
 
     void logout();
 

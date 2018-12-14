@@ -1,0 +1,274 @@
+{
+    "checked": true,
+    "attributes": null,
+    "children": [
+      {
+        "id": "1",
+        "icon": "zmdi zmdi-settings",
+        "url": null,
+        "text": "系统管理",
+        "state": null,
+        "checked": false,
+        "attributes": null,
+        "children": [
+          {
+            "id": "3",
+            "icon": "",
+            "url": "user",
+            "text": "用户管理",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "1",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "4",
+            "icon": "",
+            "url": "role",
+            "text": "角色管理",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "1",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "5",
+            "icon": "",
+            "url": "menu",
+            "text": "菜单管理",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "1",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "6",
+            "icon": "",
+            "url": "dept",
+            "text": "部门管理",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "1",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "64",
+            "icon": "",
+            "url": "dict",
+            "text": "字典管理",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "1",
+            "hasParent": true,
+            "hasChildren": false
+          }
+        ],
+        "parentId": "0",
+        "hasParent": false,
+        "hasChildren": true
+      },
+      {
+        "id": "2",
+        "icon": "zmdi zmdi-shield-security",
+        "url": null,
+        "text": "系统监控",
+        "state": null,
+        "checked": false,
+        "attributes": null,
+        "children": [
+          {
+            "id": "8",
+            "icon": "",
+            "url": "session",
+            "text": "在线用户",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "2",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "10",
+            "icon": "",
+            "url": "log",
+            "text": "系统日志",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "2",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "135",
+            "icon": "",
+            "url": "redis/info",
+            "text": "Redis监控",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "2",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "136",
+            "icon": "",
+            "url": "redis/terminal",
+            "text": "Redis终端",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "2",
+            "hasParent": true,
+            "hasChildren": false
+          }
+        ],
+        "parentId": "0",
+        "hasParent": false,
+        "hasChildren": true
+      },
+      {
+        "id": "58",
+        "icon": "zmdi zmdi-globe-alt",
+        "url": null,
+        "text": "网络资源",
+        "state": null,
+        "checked": false,
+        "attributes": null,
+        "children": [
+          {
+            "id": "59",
+            "icon": "",
+            "url": "weather",
+            "text": "天气查询",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "58",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "61",
+            "icon": "",
+            "url": "article",
+            "text": "每日一文",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "58",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "81",
+            "icon": null,
+            "url": null,
+            "text": "影视资讯",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [
+              {
+                "id": "82",
+                "icon": "",
+                "url": "movie/hot",
+                "text": "正在热映",
+                "state": null,
+                "checked": false,
+                "attributes": null,
+                "children": [],
+                "parentId": "81",
+                "hasParent": true,
+                "hasChildren": false
+              },
+              {
+                "id": "83",
+                "icon": "",
+                "url": "movie/coming",
+                "text": "即将上映",
+                "state": null,
+                "checked": false,
+                "attributes": null,
+                "children": [],
+                "parentId": "81",
+                "hasParent": true,
+                "hasChildren": false
+              }
+            ],
+            "parentId": "58",
+            "hasParent": true,
+            "hasChildren": true
+          }
+        ],
+        "parentId": "0",
+        "hasParent": false,
+        "hasChildren": true
+      },
+      {
+        "id": "101",
+        "icon": "zmdi zmdi-alarm",
+        "url": null,
+        "text": "任务调度",
+        "state": null,
+        "checked": false,
+        "attributes": null,
+        "children": [
+          {
+            "id": "102",
+            "icon": "",
+            "url": "job",
+            "text": "定时任务",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "101",
+            "hasParent": true,
+            "hasChildren": false
+          },
+          {
+            "id": "109",
+            "icon": "",
+            "url": "jobLog",
+            "text": "调度日志",
+            "state": null,
+            "checked": false,
+            "attributes": null,
+            "children": [],
+            "parentId": "101",
+            "hasParent": true,
+            "hasChildren": false
+          }
+        ],
+        "parentId": "0",
+        "hasParent": false,
+        "hasChildren": true
+      }
+    ],
+    "parentId": "",
+    "hasParent": false,
+    "hasChildren": true
+  }

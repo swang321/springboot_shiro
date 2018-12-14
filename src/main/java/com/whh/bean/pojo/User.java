@@ -18,7 +18,7 @@ public class User {
 
     private String password;
 
-    private String state;
+    private String status;
 
     /**
      *   一个用户具有多个角色

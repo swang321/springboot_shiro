@@ -1,51 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" th:href="@{/css/matrix-login.css}" />
-    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
-    <!--<link th:href='@{http://fonts.googleapis.com/css?family=Open+Sans:400,700,800}' rel='stylesheet' type='text/css'/>-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <title>权限管理系统</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.ico}" />
+    <link rel="stylesheet" th:href="@{css/login.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/iCheck/minimal/green.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/app.css}" type="text/css">
+    <!-- animate -->
+    <link rel="stylesheet" th:href="@{css/animate/animate.min.css}" type="text/css">
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/iCheck/icheck.js}"></script>
+    <script th:src="@{js/bootstrap-notify/bootstrap-notify.min.js}"></script>
+    <script th:src="@{js/common.js}"></script>
 </head>
+<style>
+
+</style>
 <body>
-<div id="loginbox"><!--/*@thymesVar id="msg" type="java.lang.String"*/-->
-    <span th:text="${msg}"></span>
-    <form id="loginform" class="form-vertical" th:action="@{/login}" action="" method="post">
-        <div class="control-group normal_text"> <h3><img th:src="@{img/logo.png}" alt="Logo" /></h3></div>
-        <div class="control-group">
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" name="username" placeholder="Username" />
+    <!-- Form-->
+    <div class="form">
+        <div class="form-toggle"></div>
+        <div class="form-panel one">
+            <div class="form-header">
+                <h1>账户登录</h1>
+            </div>
+            <div class="form-content">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" name="username" />
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" name="password" />
+                </div>
+                <div class="form-group">
+                    <button onclick="login()" id="loginButton">登录</button>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-panel two">
+            <div class="form-header">
+                <h1>账户注册</h1>
+            </div>
+            <div class="form-content">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" name="username" />
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" name="password" />
+                </div>
+                <div class="form-group">
+                    <label>确认密码</label>
+                    <input type="password" name="cpassword" />
+                </div>
+                <div class="form-group">
+                    <button onclick="regist()">注册</button>
                 </div>
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <div class="main_input_box">
-                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="password" placeholder="Password" />
-                </div>
-            </div>
-        </div>
-        <div class="form-actions">
-            <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>
-            <span class="pull-right"><a type="submit" href="javascript:$('#loginform').submit();" class="btn btn-success">Login</a></span>
-        </div>
-    </form>
-    <form id="recoverform" action="#" class="form-vertical">
-        <p class="normal_text">Enter your e-mail address below and we will send you instructions how to recover a password.</p>
-
-        <div class="controls">
-            <div class="main_input_box">
-                <span class="add-on bg_lo"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" />
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-            <span class="pull-right"><a class="btn btn-info">Reecover</a></span>
-        </div>
-    </form>
-</div>
-<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+    </div>
+    <div data-th-include="common/footer"></div>
 </body>
+<script data-th-src="@{js/app/login.js}"></script>
 </html>
