@@ -1,5 +1,6 @@
 package com.whh.shiro;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -93,6 +94,16 @@ public class ShiroConfig {
         //   1 表示散列一次
         matcher.setHashIterations(1);
         return matcher;
+    }
+
+    /**
+     * 用于开启 Thymeleaf 中的 shiro 标签的使用
+     *
+     * @return ShiroDialect shiro 方言对象
+     */
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
     }
 
 

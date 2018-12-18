@@ -44,7 +44,7 @@ function deleteRoles() {
     }
     var ids = "";
     for (var i = 0; i < selected_length; i++) {
-        ids += selected[i].roleId;
+        ids += selected[i].roleid;
         if (i !== (selected_length - 1)) ids += ",";
     }
 

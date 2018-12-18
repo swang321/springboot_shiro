@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.whh.bean.pojo.UserRole">
     insert into user_role (id, user_id, role_id
       )
-    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.whh.bean.pojo.UserRole">
@@ -36,7 +36,7 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="roleId != null">
+      <if test="roleid != null">
         role_id,
       </if>
     </trim>
@@ -47,8 +47,8 @@
       <if test="userId != null">
         #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=VARCHAR},
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -58,8 +58,8 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null">
-        role_id = #{roleId,jdbcType=VARCHAR},
+      <if test="roleid != null">
+        role_id = #{roleid,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -67,7 +67,7 @@
   <update id="updateByPrimaryKey" parameterType="com.whh.bean.pojo.UserRole">
     update user_role
     set user_id = #{userId,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=VARCHAR}
+      role_id = #{roleid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

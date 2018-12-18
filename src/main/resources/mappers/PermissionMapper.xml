@@ -6,12 +6,13 @@
       <idArg column="permission_id" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="url" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="permission" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="perms" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="resource_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="parentId" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    permission_id, url, permission, resource_type, parentId
+    permission_id, url, perms,permission, resource_type, parentId
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -24,9 +25,9 @@
     where permission_id = #{permissionId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.whh.bean.pojo.Permission">
-    insert into permission (permission_id, url, permission, 
+    insert into permission (permission_id, url,perms, permission,
       resource_type, parentId)
-    values (#{permissionId,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, 
+    values (#{permissionId,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, #{perms,jdbcType=VARCHAR},
       #{resourceType,jdbcType=INTEGER}, #{parentid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.whh.bean.pojo.Permission">
@@ -40,6 +41,9 @@
       </if>
       <if test="permission != null">
         permission,
+      </if>
+      <if test="perms != null">
+        perms,
       </if>
       <if test="resourceType != null">
         resource_type,
@@ -58,6 +62,9 @@
       <if test="permission != null">
         #{permission,jdbcType=VARCHAR},
       </if>
+      <if test="perms != null">
+        #{perms,jdbcType=VARCHAR},
+      </if>
       <if test="resourceType != null">
         #{resourceType,jdbcType=INTEGER},
       </if>
@@ -75,6 +82,9 @@
       <if test="permission != null">
         permission = #{permission,jdbcType=VARCHAR},
       </if>
+      <if test="perms != null">
+        perms = #{perms,jdbcType=VARCHAR},
+      </if>
       <if test="resourceType != null">
         resource_type = #{resourceType,jdbcType=INTEGER},
       </if>
@@ -88,24 +98,38 @@
     update permission
     set url = #{url,jdbcType=VARCHAR},
       permission = #{permission,jdbcType=VARCHAR},
+      perms = #{perms,jdbcType=VARCHAR},
       resource_type = #{resourceType,jdbcType=INTEGER},
       parentId = #{parentid,jdbcType=VARCHAR}
     where permission_id = #{permissionId,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectBysRoleId" parameterType="string" resultMap="BaseResultMap">
+  <select id="selectBysroleid" parameterType="string" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from permission
-    where role_id=#{roleId}
+    where role_id=#{roleid}
   </select>
 
   <select id="loadMenu" parameterType="map" resultMap="BaseResultMap">
-       select p.permission_id, p.url, p.permission, p.resource_type, p.parentId
+    select p.permission_id, p.url, p.permission,p.perms ,p.resource_type, p.parentId
     from permission p left join role_permission rp
     on p.permission_id=rp.permission_id
     left join user_role ur
     on rp.role_id=ur.role_id
     where user_id=#{userId} and p.resource_type= #{resourceType}
+    group by p.permission_id
   </select>
+
+  <select id="selectBysroleids" parameterType="list" resultMap="BaseResultMap">
+    select p.permission_id, url, permission,perms, resource_type, parentId
+    from permission p left join role_permission rp
+    on p.permission_id=rp.permission_id
+    where perms is not null and  rp.role_id in
+    <foreach collection="list" item="roleid" index="index" open="(" close=")" separator=",">
+      #{roleid}
+    </foreach>
+    group by p.perms
+  </select>
+
 </mapper>

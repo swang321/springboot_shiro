@@ -19,6 +19,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author admin
@@ -43,26 +45,23 @@ public class MyShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
+        System.out.println("权限认证--> MyShiroRealm.doGetAuthorizationInfo()");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //如果身份认证的时候没有传入User对象，这里只能取到userName
         //也就是SimpleAuthenticationInfo构造的时候第一个参数传递需要User对象
         User user = (User) principals.getPrimaryPrincipal();
 
         //  根据userId  查询此用户具有多少种角色
+//        set  role
         List<Role> roleList = roleMapper.selectByUserId(user.getUserId());
+        Set<String> roleSet =roleList.stream().map(Role::getRoleName).collect(Collectors.toSet());
+        authorizationInfo.setRoles(roleSet);
+//      取出所有 roleid   set  permission
+        List<Integer> ids =  roleList.stream().map(Role::getRoleId).collect(Collectors.toList());
+        List<Permission> permissionList = permissionMapper.selectBysroleids(ids);
+        Set<String> permSet =permissionList.stream().map(Permission::getPerms).collect(Collectors.toSet());
+        authorizationInfo.setStringPermissions(permSet);
 
-        for (Role role : roleList) {
-            authorizationInfo.addRole(role.getRoleName());
-
-            //  根据 角色 Id  查询此用户 拥有多少权限   //TODO 改
-            List<Permission> permissionList = permissionMapper.selectBysRoleId(role.getRoleid());
-
-            for (Permission p : permissionList) {
-
-                authorizationInfo.addStringPermission(p.getUrl());
-            }
-        }
         return authorizationInfo;
     }
 
@@ -72,7 +71,7 @@ public class MyShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
+        System.out.println("权限认证--> MyShiroRealm.doGetAuthenticationInfo()");
         //获取用户的输入的账号.
         String userName = (String) token.getPrincipal();
         //通过username从数据库中查找 User对象.

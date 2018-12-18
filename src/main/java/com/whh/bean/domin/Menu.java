@@ -15,13 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 public class Menu {
 
-    private String permissionId;
+    private Integer permissionId;
 
     private String url;
 
     private String permission;
 
-    private String parentid;
+    private Integer parentId;
 
     private List<Menu> children;
 

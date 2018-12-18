@@ -6,11 +6,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    private String userId;
+    private Integer userId;
 
     private String username;
 
@@ -18,10 +21,6 @@ public class User {
 
     private String password;
 
-    private String status;
+    private Integer status;
 
-    /**
-     *   一个用户具有多个角色
-     */
-//    private List<Role> roleList;
 }

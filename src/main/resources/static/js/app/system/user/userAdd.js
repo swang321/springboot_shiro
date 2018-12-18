@@ -6,8 +6,6 @@ var $roles = $userAddForm.find("input[name='roles']");
 $(function () {
     validateRule();
     initRole();
-    createDeptTree();
-
     $("input[name='status']").change(function () {
         var checked = $(this).is(":checked");
         var $status_label = $("#status");
@@ -17,12 +15,13 @@ $(function () {
 
     $("#user-add .btn-save").click(function () {
         var name = $(this).attr("name");
-        getDept();
+        console.log(name+"--name--")
         var validator = $userAddForm.validate();
+        console.log($userAddForm.serialize());
         var flag = validator.form();
         if (flag) {
             if (name === "save") {
-                $.post(ctx + "user/add", $userAddForm.serialize(), function (r) {
+                $.post("user/add", $userAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         closeModal();
                         $MB.n_success(r.msg);
@@ -30,15 +29,7 @@ $(function () {
                     } else $MB.n_danger(r.msg);
                 });
             }
-            if (name === "update") {
-                $.post(ctx + "user/update", $userAddForm.serialize(), function (r) {
-                    if (r.code === 0) {
-                        closeModal();
-                        $MB.n_success(r.msg);
-                        $MB.refreshTable("userTable");
-                    } else $MB.n_danger(r.msg);
-                });
-            }
+
         }
     });
 
@@ -50,7 +41,7 @@ $(function () {
 
 function closeModal() {
     $("#user-add-button").attr("name", "save");
-    validator.resetForm();
+    // validator.resetForm();
     $rolesSelect.multipleSelect('setSelects', []);
     $rolesSelect.multipleSelect("refresh");
     $userAddForm.find("input[name='username']").removeAttr("readonly");
@@ -58,9 +49,7 @@ function closeModal() {
     $userAddForm.find("input[name='status']").prop("checked", true);
     $("#user-add-modal-title").html('新增用户');
     $("#status").html('可用');
-    $MB.resetJsTree("deptTree");
     $MB.closeAndRestModal("user-add");
-
 }
 
 function validateRule() {
@@ -78,23 +67,11 @@ function validateRule() {
                     data: {
                         username: function () {
                             return $("input[name='username']").val().trim();
-                        },
-                        oldusername: function () {
-                            return $("input[name='oldusername']").val().trim();
                         }
                     }
                 }
             },
-            email: {
-                email: true
-            },
             roles: {
-                required: true
-            },
-            mobile: {
-                checkPhone: true
-            },
-            ssex: {
                 required: true
             }
         },
@@ -111,19 +88,17 @@ function validateRule() {
                 minlength: icon + "用户名长度3到10个字符",
                 remote: icon + "用户名已经存在"
             },
-            roles: icon + "请选择用户角色",
-            email: icon + "邮箱格式不正确",
-            ssex: icon + "请选择性别"
+            roles: icon + "请选择用户角色"
         }
     });
 }
 
 function initRole() {
-    $.post(ctx + "role/list", {}, function (r) {
-        var data = r.rows;
+    $.post("role/list", {}, function (r) {
+        var data = r.data;
         var option = "";
         for (var i = 0; i < data.length; i++) {
-            option += "<option value='" + data[i].roleId + "'>" + data[i].roleName + "</option>"
+            option += "<option value='" + data[i].roleId + "'>" + data[i].description + "</option>"
         }
         $rolesSelect.html("").append(option);
         var options = {
@@ -138,32 +113,4 @@ function initRole() {
 
         $rolesSelect.multipleSelect(options);
     });
-}
-
-function createDeptTree() {
-    $.post(ctx + "dept/tree", {}, function (r) {
-        if (r.code === 0) {
-            var data = r.msg;
-            $('#deptTree').jstree({
-                "core": {
-                    'data': data.children,
-                    'multiple': false // 取消多选
-                },
-                "state": {
-                    "disabled": true
-                },
-                "checkbox": {
-                    "three_state": false // 取消选择父节点后选中所有子节点
-                },
-                "plugins": ["wholerow", "checkbox"]
-            });
-        } else {
-            $MB.n_danger(r.msg);
-        }
-    })
-}
-
-function getDept() {
-    var ref = $('#deptTree').jstree(true);
-    $("[name='deptId']").val(ref.get_selected()[0]);
 }

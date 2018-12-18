@@ -2,7 +2,9 @@ package com.whh.controller;
 
 import com.whh.bean.domin.Menu;
 import com.whh.bean.pojo.Permission;
+import com.whh.bean.pojo.Role;
 import com.whh.dao.PermissionMapper;
+import com.whh.dao.RoleMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
@@ -10,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,51 +25,25 @@ import java.util.Map;
 public class PermissionControllerTest {
 
     @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
     private PermissionMapper permissionMapper;
 
     @Test
     public void t() {
-        Map<String, Object> map = new HashMap<>(2);
-        map.put("userId", 1);
-        map.put("resourceType", 0);
-        List<Permission> permissionList = permissionMapper.loadMenu(map);
+        //  根据userId  查询此用户具有多少种角色
+        List<Role> roleList = roleMapper.selectByUserId("1");
+        Set<String> roleSet =roleList.stream().map(Role::getRoleName).collect(Collectors.toSet());
+        System.out.println(roleSet);
 
-        Menu menuParens = new Menu();
-        List<Menu> list = new ArrayList<>();
-        for (Permission permission : permissionList) {
-            if (permission.getParentid().equals("0")) {
-                Menu menuChildren = new Menu();
-                menuChildren.setPermissionId(permission.getPermissionId());
-                menuChildren.setPermission(permission.getPermission());
-                menuChildren.setUrl(permission.getUrl());
-                list.add(menuChildren);
-            }
-        }
-
-        menuParens.setChildren(list);
-        for (Menu child : menuParens.getChildren()) {
-            findChildren(child, permissionList);
-        }
-        for (Menu child : menuParens.getChildren()) {
-            System.out.println(child);
-        }
+        List<String> ids =  roleList.stream().map(Role::getRoleId).collect(Collectors.toList());
+        List<Permission> permissionList = permissionMapper.selectBysroleids(ids);
+        System.out.println(permissionList);
 
     }
 
-    public Menu findChildren(Menu menu, List<Permission> permissionList) {
-        for (Permission menuChildren : permissionList) {
-            if (menuChildren.getParentid().equals(menu.getPermissionId())){
 
-                if (menu.getChildren()==null){
-                    menu.setChildren(new ArrayList<>());
-                }
-                Menu menu1 = new Menu();
-                BeanUtils.copyProperties(menuChildren,menu1);
-                menu.getChildren().add(findChildren(menu1,permissionList));
-            }
-        }
-        return menu;
-    }
 }
 
 

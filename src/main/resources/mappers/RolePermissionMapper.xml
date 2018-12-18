@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.whh.bean.pojo.RolePermission">
     insert into role_permission (id, role_id, permission_id
       )
-    values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{permissionId,jdbcType=VARCHAR}
+    values (#{id,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, #{permissionId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.whh.bean.pojo.RolePermission">
@@ -33,7 +33,7 @@
       <if test="id != null">
         id,
       </if>
-      <if test="roleId != null">
+      <if test="roleid != null">
         role_id,
       </if>
       <if test="permissionId != null">
@@ -44,8 +44,8 @@
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=VARCHAR},
+      <if test="roleid != null">
+        #{roleid,jdbcType=VARCHAR},
       </if>
       <if test="permissionId != null">
         #{permissionId,jdbcType=VARCHAR},
@@ -55,8 +55,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.whh.bean.pojo.RolePermission">
     update role_permission
     <set>
-      <if test="roleId != null">
-        role_id = #{roleId,jdbcType=VARCHAR},
+      <if test="roleid != null">
+        role_id = #{roleid,jdbcType=VARCHAR},
       </if>
       <if test="permissionId != null">
         permission_id = #{permissionId,jdbcType=VARCHAR},
@@ -66,7 +66,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.whh.bean.pojo.RolePermission">
     update role_permission
-    set role_id = #{roleId,jdbcType=VARCHAR},
+    set role_id = #{roleid,jdbcType=VARCHAR},
       permission_id = #{permissionId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

@@ -18,8 +18,12 @@ public interface PermissionMapper {
 
     int updateByPrimaryKey(Permission record);
 
-    List<Permission> selectBysRoleId(String roleid);
+    List<Permission> selectBysroleid(String roleid);
 
     List<Permission> loadMenu(Map<String,Object> map);
 
+    /**
+     * 根据roles 查询所有权限
+     */
+    List<Permission> selectBysroleids(List<Integer> ids);
 }

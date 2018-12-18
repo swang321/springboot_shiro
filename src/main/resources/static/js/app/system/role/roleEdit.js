@@ -9,8 +9,8 @@ function updateRole() {
         $MB.n_warning('一次只能修改一个角色！');
         return;
     }
-    var roleId = selected[0].roleId;
-    $.post(ctx + "role/getRole", {"roleId": roleId}, function (r) {
+    var roleid = selected[0].roleid;
+    $.post(ctx + "role/getRole", {"roleid": roleid}, function (r) {
         if (r.code === 0) {
             var $form = $('#role-add');
             var $menuTree = $('#menuTree');
@@ -19,7 +19,7 @@ function updateRole() {
             $("#role-add-modal-title").html('修改角色');
             $form.find("input[name='roleName']").val(role.roleName);
             $form.find("input[name='oldRoleName']").val(role.roleName);
-            $form.find("input[name='roleId']").val(role.roleId);
+            $form.find("input[name='roleid']").val(role.roleid);
             $form.find("input[name='remark']").val(role.remark);
             var menuArr = [];
             for (var i = 0; i < role.menuIds.length; i++) {

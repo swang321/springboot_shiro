@@ -24,8 +24,8 @@ function updateUser() {
             $form.find("input[name='email']").val(user.email);
             $form.find("input[name='mobile']").val(user.mobile);
             var roleArr = [];
-            for (var i = 0; i < user.roleIds.length; i++) {
-                roleArr.push(user.roleIds[i]);
+            for (var i = 0; i < user.roleids.length; i++) {
+                roleArr.push(user.roleids[i]);
             }
             $form.find("select[name='rolesSelect']").multipleSelect('setSelects', roleArr);
             $form.find("input[name='roles']").val($form.find("select[name='rolesSelect']").val());

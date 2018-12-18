@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-
 /**
  * @ProjectName: swang
  * @Author: swang
@@ -17,11 +15,11 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class RegisterDTO {
 
-    @NotBlank(message = "用户名不能为空")
     private String username;
 
-    @NotBlank(message = "密码不能为空")
     private String password;
 
-    private String nickName;
+    private String roles;
+
+    private String status;
 }

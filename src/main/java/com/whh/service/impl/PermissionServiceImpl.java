@@ -36,8 +36,9 @@ public class PermissionServiceImpl implements IPermissionService {
         Menu menuParens = new Menu();
         List<Menu> list = new ArrayList<>();
         //先找出父节点
+        //    10  表示 parentId
         for (Permission permission : permissionList) {
-            if ("0".equals(permission.getParentid())) {
+            if (permission.getParentid()==0) {
                 Menu menuChildren = new Menu();
                 menuChildren.setPermissionId(permission.getPermissionId());
                 menuChildren.setPermission(permission.getPermission());
