@@ -27,7 +27,7 @@ public class PermissionServiceImpl implements IPermissionService {
 
     @Override
     public ServerResponse<Menu> loadMenu() {
-        String userId = (String) SecurityUtils.getSubject().getSession().getAttribute("userSessionId");
+        Integer userId = (Integer) SecurityUtils.getSubject().getSession().getAttribute("userSessionId");
         Map<String, Object> map = new HashMap<>(2);
         map.put("userId", userId);
         map.put("resourceType", 0);
@@ -38,7 +38,7 @@ public class PermissionServiceImpl implements IPermissionService {
         //先找出父节点
         //    10  表示 parentId
         for (Permission permission : permissionList) {
-            if (permission.getParentid()==0) {
+            if (permission.getParentId()==0) {
                 Menu menuChildren = new Menu();
                 menuChildren.setPermissionId(permission.getPermissionId());
                 menuChildren.setPermission(permission.getPermission());
@@ -60,7 +60,7 @@ public class PermissionServiceImpl implements IPermissionService {
      */
     private Menu findChildren(Menu menu, List<Permission> permissionList) {
         for (Permission menuChildren : permissionList) {
-            if (menuChildren.getParentid().equals(menu.getPermissionId())){
+            if (menuChildren.getParentId().equals(menu.getPermissionId())){
 
                 if (menu.getChildren()==null){
                     menu.setChildren(new ArrayList<>());

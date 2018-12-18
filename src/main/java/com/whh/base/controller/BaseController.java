@@ -22,6 +22,7 @@ public class BaseController {
     protected static Subject getSubject() {
         return SecurityUtils.getSubject();
     }
+
     protected User getCurrentUser() {
         return (User) getSubject().getPrincipal();
     }

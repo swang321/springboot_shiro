@@ -58,7 +58,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         authorizationInfo.setRoles(roleSet);
 //      取出所有 roleid   set  permission
         List<Integer> ids =  roleList.stream().map(Role::getRoleId).collect(Collectors.toList());
-        List<Permission> permissionList = permissionMapper.selectBysroleids(ids);
+        List<Permission> permissionList = permissionMapper.selectByRoleIds(ids);
         Set<String> permSet =permissionList.stream().map(Permission::getPerms).collect(Collectors.toSet());
         authorizationInfo.setStringPermissions(permSet);
 

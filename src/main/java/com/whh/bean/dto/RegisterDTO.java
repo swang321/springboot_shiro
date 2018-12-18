@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * @ProjectName: swang
  * @Author: swang
@@ -19,7 +21,7 @@ public class RegisterDTO {
 
     private String password;
 
-    private String roles;
+    private List<Integer> roles;
 
     private String status;
 }

@@ -19,16 +19,13 @@ $(function () {
         }, {
             field: 'username',
             title: '用户名'
-        }, {
-            field: 'name',
-            title: '描述'
         },
         {
             field: 'status',
             title: '状态',
             formatter: function (value, row, index) {
-                if (value === '1') return '<span class="badge badge-success">有效</span>';
-                if (value === '0') return '<span class="badge badge-warning">锁定</span>';
+                if (value === 1) return '<span class="badge badge-success">有效</span>';
+                if (value === 0) return '<span class="badge badge-warning">锁定</span>';
             }
         }
 
@@ -55,10 +52,10 @@ function deleteUsers() {
         $MB.n_warning('请勾选需要删除的用户！');
         return;
     }
-    var ids = "";
+    var userIds = "";
     for (var i = 0; i < selected_length; i++) {
-        ids += selected[i].userId;
-        if (i !== (selected_length - 1)) ids += ",";
+        userIds += selected[i].userId;
+        if (i !== (selected_length - 1)) userIds += ",";
         if (userName === selected[i].username) contain = true;
     }
     if (contain) {
@@ -70,7 +67,7 @@ function deleteUsers() {
         text: "确定删除选中用户？",
         confirmButtonText: "确定删除"
     }, function () {
-        $.post(ctx + 'user/delete', {"ids": ids}, function (r) {
+        $.post('user/delete', {"userIds": userIds}, function (r) {
             if (r.code === 0) {
                 $MB.n_success(r.msg);
                 refresh();

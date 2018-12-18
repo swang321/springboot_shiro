@@ -15,13 +15,21 @@ $(function () {
 
     $("#user-add .btn-save").click(function () {
         var name = $(this).attr("name");
-        console.log(name+"--name--")
         var validator = $userAddForm.validate();
         console.log($userAddForm.serialize());
         var flag = validator.form();
         if (flag) {
             if (name === "save") {
                 $.post("user/add", $userAddForm.serialize(), function (r) {
+                    if (r.code === 0) {
+                        closeModal();
+                        $MB.n_success(r.msg);
+                        $MB.refreshTable("userTable");
+                    } else $MB.n_danger(r.msg);
+                });
+            }
+            if (name === "update") {
+                $.post("user/update", $userAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         closeModal();
                         $MB.n_success(r.msg);
@@ -41,11 +49,10 @@ $(function () {
 
 function closeModal() {
     $("#user-add-button").attr("name", "save");
-    // validator.resetForm();
+    validator.resetForm();
     $rolesSelect.multipleSelect('setSelects', []);
     $rolesSelect.multipleSelect("refresh");
     $userAddForm.find("input[name='username']").removeAttr("readonly");
-    $userAddForm.find(".user_password").show();
     $userAddForm.find("input[name='status']").prop("checked", true);
     $("#user-add-modal-title").html('新增用户');
     $("#status").html('可用');

@@ -4,6 +4,7 @@ import com.whh.base.common.ServerResponse;
 import com.whh.base.controller.BaseController;
 import com.whh.bean.domin.PageParam;
 import com.whh.bean.dto.RegisterDTO;
+import com.whh.bean.dto.UpdateDTO;
 import com.whh.bean.pojo.User;
 import com.whh.service.IUserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -48,6 +49,13 @@ public class UserController extends BaseController {
         return userService.regUser(registerDTO);
     }
 
+    @RequiresPermissions("user:update")
+    @RequestMapping("/user/update")
+    @ResponseBody
+    public ServerResponse userUpdate(UpdateDTO updateDTO) {
+        return userService.userUpdate(updateDTO);
+    }
+
     /**
      * 检查用户名是否重名
      */
@@ -56,4 +64,19 @@ public class UserController extends BaseController {
     public Boolean userCheckUserName(String username) {
         return userService.userCheckUserName(username);
     }
+
+    @RequestMapping("/user/getUser")
+    @ResponseBody
+    public ServerResponse getUserById(Integer userId) {
+        return userService.getUserById(userId);
+    }
+
+    @RequiresPermissions("user:delete")
+    @RequestMapping("/user/delete")
+    @ResponseBody
+    public ServerResponse deleteUser(Integer[] userIds) {
+        return userService.deleteUser(userIds);
+    }
+
+
 }

@@ -3,13 +3,13 @@ package com.whh.dao;
 import com.whh.bean.pojo.RolePermission;
 
 public interface RolePermissionMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(RolePermission record);
 
     int insertSelective(RolePermission record);
 
-    RolePermission selectByPrimaryKey(String id);
+    RolePermission selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(RolePermission record);
 

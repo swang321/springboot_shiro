@@ -2,7 +2,9 @@ package com.whh.service;
 
 import com.whh.base.common.ServerResponse;
 import com.whh.bean.domin.PageParam;
+import com.whh.bean.domin.UserVO;
 import com.whh.bean.dto.RegisterDTO;
+import com.whh.bean.dto.UpdateDTO;
 import com.whh.bean.pojo.User;
 
 import java.util.List;
@@ -14,9 +16,15 @@ import java.util.List;
 public interface IUserService {
     User findByUserName(String username);
 
-    List<User> findAll(User user, PageParam pageParam);
+    List<UserVO> findAll(User user, PageParam pageParam);
 
     Boolean userCheckUserName(String username);
 
     ServerResponse regUser(RegisterDTO registerDTO);
+
+    ServerResponse getUserById(Integer userId);
+
+    ServerResponse deleteUser(Integer[] userIds);
+
+    ServerResponse userUpdate(UpdateDTO updateDTO);
 }
