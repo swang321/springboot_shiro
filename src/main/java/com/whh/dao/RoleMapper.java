@@ -1,6 +1,7 @@
 package com.whh.dao;
 
 import com.whh.bean.pojo.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,5 +20,9 @@ public interface RoleMapper {
 
     List<Role> selectByUserId(Integer userId);
 
-    List<Role> allRole();
+    List<Role> allRole(Role role);
+
+    Role findByName(String roleName);
+
+    void deleteRoles(@Param("roleIds")Integer[] roleIds);
 }

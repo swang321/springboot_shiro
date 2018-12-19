@@ -26,4 +26,6 @@ public interface PermissionMapper {
      * 根据roles 查询所有权限
      */
     List<Permission> selectByRoleIds(List<Integer> ids);
+
+    List<Permission> findAll();
 }

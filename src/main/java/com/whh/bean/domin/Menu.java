@@ -19,7 +19,7 @@ public class Menu {
 
     private String url;
 
-    private String permission;
+    private String text;
 
     private Integer parentId;
 

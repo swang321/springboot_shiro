@@ -1,6 +1,6 @@
 $(function () {
     var settings = {
-        url: ctx + "role/list",
+        url:"role/list",
         pageSize: 10,
         queryParams: function (params) {
             return {
@@ -15,12 +15,10 @@ $(function () {
             field: 'roleName',
             title: '角色'
         }, {
-            field: 'remark',
+            field: 'description',
             title: '描述'
-        }, {
-            field: 'createTime',
-            title: '创建时间'
-        }]
+        }
+        ]
     };
 
     $MB.initTable('roleTable', settings);
@@ -44,7 +42,7 @@ function deleteRoles() {
     }
     var ids = "";
     for (var i = 0; i < selected_length; i++) {
-        ids += selected[i].roleid;
+        ids += selected[i].roleId;
         if (i !== (selected_length - 1)) ids += ",";
     }
 
@@ -52,7 +50,7 @@ function deleteRoles() {
         text: "删除选中角色将导致该角色对应账户失去相应的权限，确定删除？",
         confirmButtonText: "确定删除"
     }, function () {
-        $.post(ctx + 'role/delete', {"ids": ids}, function (r) {
+        $.post('role/delete', {"roleIds": ids}, function (r) {
             if (r.code === 0) {
                 $MB.n_success(r.msg);
                 refresh();
@@ -60,25 +58,5 @@ function deleteRoles() {
                 $MB.n_danger(r.msg);
             }
         });
-    });
-}
-
-function exportRoleExcel() {
-    $.post(ctx + "role/excel", $(".role-table-form").serialize(), function (r) {
-        if (r.code === 0) {
-            window.location.href = "common/download?fileName=" + r.msg + "&delete=" + true;
-        } else {
-            $MB.n_warning(r.msg);
-        }
-    });
-}
-
-function exportRoleCsv() {
-    $.post(ctx + "role/csv", $(".role-table-form").serialize(), function (r) {
-        if (r.code === 0) {
-            window.location.href = "common/download?fileName=" + r.msg + "&delete=" + true;
-        } else {
-            $MB.n_warning(r.msg);
-        }
     });
 }

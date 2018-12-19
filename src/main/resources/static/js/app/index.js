@@ -19,9 +19,9 @@ $(window).on("load", function () {
                 var urlstr = "";
                 try {
                     if (!o[i]["url"]) {
-                        urlstr = "<div><span>&nbsp;&nbsp;" + o[i]["permission"] + "</span><ul>";
+                        urlstr = "<div><span>&nbsp;&nbsp;" + o[i]["text"] + "</span><ul>";
                     } else {
-                        urlstr = "<div><span name=" + o[i]["url"] + " onclick='loadMain(this);'>&nbsp;&nbsp;" + o[i]["permission"] + "</span><ul>";
+                        urlstr = "<div><span name=" + o[i]["url"] + " onclick='loadMain(this);'>&nbsp;&nbsp;" + o[i]["text"] + "</span><ul>";
                     }
                     str += urlstr;
                     if (o[i]["children"] !== null) {
@@ -117,40 +117,4 @@ $(window).on("load", function () {
     };
 
 
-// function loadMain(obj) {
-//     console.log("------------")
-//     // 设置面包屑
-//     var $this = $(obj);
-//     $(".navigation").find("span").removeClass("navigation__active");
-//     $this.addClass("navigation__active").parents("ul").prev().addClass("navigation__active");
-//
-//     var breadcrumnHtml = "";
-//     var target_text = $this.text();
-//     var text_arr = [];
-//     var parent = $this.parents("ul").prev().each(function () {
-//         var $this = $(this);
-//         text_arr.unshift($this.text());
-//     });
-//     for (var i = 0; i < text_arr.length; i++) {
-//         breadcrumnHtml += '<li class="breadcrumb-item">' + text_arr[i] + '</li>';
-//     }
-//     breadcrumnHtml += '<li class="breadcrumb-item">' + target_text + '</li>';
-//     $breadcrumb.html("").append(breadcrumnHtml);
-//
-//     // 加载内容
-//     var $name = $this.attr("name");
-//     $.post(ctx + $name, {}, function (r) {
-//         if(r.code === 500){
-//             $MB.n_danger(r.msg);
-//             return;
-//         }
-//         if (r.indexOf('账户登录') !== -1) {
-//             location = location;
-//             return;
-//         }
-//         clearInterval(rediskeysSizeInterval);
-//         clearInterval(redisMemoryInfoInterval);
-//         $main_content.html("").append(r);
-//     });
-// }
 

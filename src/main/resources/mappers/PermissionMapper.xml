@@ -135,4 +135,10 @@
         group by p.perms
     </select>
 
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from permission
+    </select>
+
 </mapper>

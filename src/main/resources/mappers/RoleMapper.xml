@@ -83,6 +83,26 @@
         select
         <include refid="Base_Column_List"/>
         from role
+        <where>
+            <if test="roleName != null and roleName != ''">
+                AND role_name = #{roleName}
+            </if>
+        </where>
     </select>
+
+    <select id="findByName" parameterType="string" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        where role_name =#{roleName}
+    </select>
+
+    <delete id="deleteRoles">
+        delete from role
+        where role_id in
+        <foreach collection="roleIds" item="item" open="(" close=")" index="index" separator=",">
+            #{item}
+        </foreach>
+    </delete>
 
 </mapper>

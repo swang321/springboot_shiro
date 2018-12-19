@@ -9,8 +9,8 @@ function updateRole() {
         $MB.n_warning('一次只能修改一个角色！');
         return;
     }
-    var roleid = selected[0].roleid;
-    $.post(ctx + "role/getRole", {"roleid": roleid}, function (r) {
+    var roleId = selected[0].roleId;
+    $.post("role/getRole", {"roleId": roleId}, function (r) {
         if (r.code === 0) {
             var $form = $('#role-add');
             var $menuTree = $('#menuTree');

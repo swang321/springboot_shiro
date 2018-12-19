@@ -9,4 +9,6 @@ import com.whh.bean.domin.Menu;
  */
 public interface IPermissionService {
     ServerResponse<Menu> loadMenu();
+
+    ServerResponse<Menu> loadMenuAll();
 }

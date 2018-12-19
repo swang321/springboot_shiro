@@ -54,12 +54,15 @@ public class MyShiroRealm extends AuthorizingRealm {
         //  根据userId  查询此用户具有多少种角色
 //        set  role
         List<Role> roleList = roleMapper.selectByUserId(user.getUserId());
-        Set<String> roleSet =roleList.stream().map(Role::getRoleName).collect(Collectors.toSet());
+        Set<String> roleSet = roleList.stream().map(Role::getRoleName).collect(Collectors.toSet());
         authorizationInfo.setRoles(roleSet);
 //      取出所有 roleid   set  permission
-        List<Integer> ids =  roleList.stream().map(Role::getRoleId).collect(Collectors.toList());
+        List<Integer> ids = roleList.stream().map(Role::getRoleId).collect(Collectors.toList());
         List<Permission> permissionList = permissionMapper.selectByRoleIds(ids);
-        Set<String> permSet =permissionList.stream().map(Permission::getPerms).collect(Collectors.toSet());
+        Set<String> permSet = permissionList.stream().map(Permission::getPerms).collect(Collectors.toSet());
+        permSet.forEach(perms ->
+                System.out.println("拥有的权限----------   " + perms + "     --------------  ")
+        );
         authorizationInfo.setStringPermissions(permSet);
 
         return authorizationInfo;

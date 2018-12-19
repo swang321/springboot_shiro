@@ -25,5 +25,10 @@ public class PermissionController extends BaseController {
         return permissionService.loadMenu();
     }
 
+    @RequestMapping("loadMenuAll")
+    public ServerResponse<Menu> loadMenuAll(){
+        return permissionService.loadMenuAll();
+    }
+
 
 }

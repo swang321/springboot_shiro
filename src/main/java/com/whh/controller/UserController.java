@@ -56,6 +56,14 @@ public class UserController extends BaseController {
         return userService.userUpdate(updateDTO);
     }
 
+    @RequiresPermissions("user:delete")
+    @RequestMapping("/user/delete")
+    @ResponseBody
+    public ServerResponse deleteUser(Integer[] userIds) {
+        return userService.deleteUser(userIds);
+    }
+
+
     /**
      * 检查用户名是否重名
      */
@@ -69,13 +77,6 @@ public class UserController extends BaseController {
     @ResponseBody
     public ServerResponse getUserById(Integer userId) {
         return userService.getUserById(userId);
-    }
-
-    @RequiresPermissions("user:delete")
-    @RequestMapping("/user/delete")
-    @ResponseBody
-    public ServerResponse deleteUser(Integer[] userIds) {
-        return userService.deleteUser(userIds);
     }
 
 

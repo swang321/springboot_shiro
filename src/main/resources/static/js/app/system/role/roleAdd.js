@@ -12,7 +12,7 @@ $(function () {
         var flag = validator.form();
         if (flag) {
             if (name === "save") {
-                $.post(ctx + "role/add", $roleAddForm.serialize(), function (r) {
+                $.post("role/add", $roleAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         closeModal();
                         $MB.n_success(r.msg);
@@ -21,7 +21,7 @@ $(function () {
                 });
             }
             if (name === "update") {
-                $.post(ctx + "role/update", $roleAddForm.serialize(), function (r) {
+                $.post("role/update", $roleAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         closeModal();
                         $MB.n_success(r.msg);
@@ -68,7 +68,7 @@ function validateRule() {
                     }
                 }
             },
-            remark: {
+            description: {
                 maxlength: 50
             },
             menuId: {
@@ -81,16 +81,16 @@ function validateRule() {
                 minlength: icon + "角色名称长度3到10个字符",
                 remote: icon + "该角色名已经存在"
             },
-            remark: icon + "角色描述不能超过50个字符",
+            description: icon + "角色描述不能超过50个字符",
             menuId: icon + "请选择相应菜单权限"
         }
     });
 }
 
 function createMenuTree() {
-    $.post(ctx + "menu/menuButtonTree", {}, function (r) {
+    $.post("permission/loadMenuAll", {}, function (r) {
         if (r.code === 0) {
-            var data = r.msg;
+            var data = r.data;
             $('#menuTree').jstree({
                 "core": {
                     'data': data.children
@@ -113,9 +113,12 @@ function createMenuTree() {
 function getMenu() {
     var $menuTree = $('#menuTree');
     var ref = $menuTree.jstree(true);
+    console.log("*******************    "+ref);
     var menuIds = ref.get_checked();
+    console.log("---------------------    "+menuIds);
     $menuTree.find(".jstree-undetermined").each(function (i, element) {
         menuIds.push($(element).closest('.jstree-node').attr("id"));
     });
+    console.log("++++++++++++++++++    "+menuIds);
     $("[name='menuId']").val(menuIds);
 }
