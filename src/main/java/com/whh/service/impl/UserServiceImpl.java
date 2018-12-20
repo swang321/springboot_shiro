@@ -87,7 +87,9 @@ public class UserServiceImpl implements IUserService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ServerResponse deleteUser(Integer[] userIds) {
+        //删除用户
         userMapper.deleteUser(userIds);
+        //删除  用户所对应的角色
         userRoleMapper.deleteURByUserId(userIds);
         return ServerResponse.createBySuccessMsg();
     }

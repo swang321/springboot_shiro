@@ -27,7 +27,7 @@
     values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.whh.bean.pojo.Role">
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="roleId" parameterType="com.whh.bean.pojo.Role">
         insert into role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="roleId != null">

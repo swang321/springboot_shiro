@@ -21,4 +21,6 @@ public interface UserRoleMapper {
     void batchUserRole(@Param("userId") Integer userId, @Param("roleIds") List<Integer> roleIds);
 
     void deleteURByUserId(@Param("userIds") Integer[] userIds);
+
+    void deleteURByRoleId(@Param("roleIds")Integer[] roleIds);
 }

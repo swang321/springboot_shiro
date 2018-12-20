@@ -7,12 +7,12 @@ function initTreeTable() {
     var setting = {
         id: 'menuId',
         code: 'menuId',
-        url: ctx + 'menu/list',
+        url: 'permission/list',
         expandAll: true,
         expandColumn: "2",
         ajaxParams: {
-            menuName: $menuTableForm.find("input[name='menuName']").val().trim(),
-            type: $menuTableForm.find("select[name='type']").val()
+            permission: $menuTableForm.find("input[name='menuName']").val().trim(),
+            resourceType: $menuTableForm.find("select[name='type']").val()
         },
         columns: [
             {
@@ -27,15 +27,6 @@ function initTreeTable() {
             {
                 title: '名称',
                 field: 'menuName'
-            },
-
-            {
-                title: '图标',
-                field: 'icon',
-                formatter: function (item, index) {
-                    return '<i class="zmdi ' + item.icon + '"></i>';
-                }
-
             },
             {
                 title: '类型',
@@ -59,10 +50,6 @@ function initTreeTable() {
                 formatter: function (item, index) {
                     return item.perms === 'null' ? '' : item.perms;
                 }
-            },
-            {
-                title: '创建时间',
-                field: 'createTime'
             }
         ]
     };
@@ -95,7 +82,7 @@ function deleteMenus() {
         text: "确定删除选中菜单或按钮？",
         confirmButtonText: "确定删除"
     }, function () {
-        $.post(ctx + 'menu/delete', {"ids": ids_arr}, function (r) {
+        $.post('menu/delete', {"ids": ids_arr}, function (r) {
             if (r.code === 0) {
                 $MB.n_success(r.msg);
                 refresh();
@@ -106,22 +93,3 @@ function deleteMenus() {
     });
 }
 
-function exportMenuExcel() {
-    $.post(ctx + "menu/excel", $(".menu-table-form").serialize(), function (r) {
-        if (r.code === 0) {
-            window.location.href = "common/download?fileName=" + r.msg + "&delete=" + true;
-        } else {
-            $MB.n_warning(r.msg);
-        }
-    });
-}
-
-function exportMenuCsv() {
-    $.post(ctx + "menu/csv", $(".menu-table-form").serialize(), function (r) {
-        if (r.code === 0) {
-            window.location.href = "common/download?fileName=" + r.msg + "&delete=" + true;
-        } else {
-            $MB.n_warning(r.msg);
-        }
-    });
-}

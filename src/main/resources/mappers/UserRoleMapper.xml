@@ -87,4 +87,12 @@
     </foreach>
   </delete>
 
+  <delete id="deleteURByRoleId">
+    delete from user_role
+    where role_id in
+    <foreach collection="roleIds" item="item" open="(" close=")" index="index" separator=",">
+      #{item}
+    </foreach>
+  </delete>
+
 </mapper>

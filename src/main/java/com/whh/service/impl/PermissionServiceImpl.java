@@ -1,7 +1,10 @@
 package com.whh.service.impl;
 
+import com.google.common.collect.Lists;
 import com.whh.base.common.ServerResponse;
 import com.whh.bean.domin.Menu;
+import com.whh.bean.domin.MenuPermission;
+import com.whh.bean.domin.PageParam;
 import com.whh.bean.pojo.Permission;
 import com.whh.dao.PermissionMapper;
 import com.whh.service.IPermissionService;
@@ -74,6 +77,32 @@ public class PermissionServiceImpl implements IPermissionService {
         return ServerResponse.createBySuccessData(menuPermission);
     }
 
+    @Override
+    public List<MenuPermission> findAll(Permission permission, PageParam pageParam) {
+        List<Permission> permissionList = permissionMapper.findAll();
+        return assembleMenuPermission(permissionList);
+    }
+
+    /**
+     * List<Permission>  转    List<MenuPermission>
+     */
+    private List<MenuPermission> assembleMenuPermission(List<Permission> permissions) {
+        List<MenuPermission> menuPermissions = Lists.newArrayList();
+
+        permissions.forEach(t -> {
+            MenuPermission menuPermission = new MenuPermission();
+            menuPermission.setMenuId(t.getPermissionId());
+            menuPermission.setMenuName(t.getPermission());
+            menuPermission.setPerms(t.getPerms());
+            menuPermission.setParentId(t.getParentId());
+            menuPermission.setType(String.valueOf(t.getResourceType()));
+            menuPermission.setUrl(t.getUrl());
+            menuPermissions.add(menuPermission);
+        });
+
+        return menuPermissions;
+    }
+
 
     /**
      * 递归寻找子节点
@@ -119,6 +148,7 @@ public class PermissionServiceImpl implements IPermissionService {
         Menu menu = new Menu();
         BeanUtils.copyProperties(permission, menu);
         menu.setText(permission.getPermission());
+        menu.setId(permission.getPermissionId());
         return menu;
     }
 }

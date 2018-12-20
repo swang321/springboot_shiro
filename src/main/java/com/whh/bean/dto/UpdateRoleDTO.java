@@ -14,7 +14,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddRoleDTO {
+public class UpdateRoleDTO {
+
+    private Integer roleId;
 
     private String roleName;
 

@@ -74,6 +74,9 @@ function validateRule() {
                     data: {
                         username: function () {
                             return $("input[name='username']").val().trim();
+                        },
+                        oldusername: function () {
+                            return $("input[name='oldusername']").val().trim();
                         }
                     }
                 }

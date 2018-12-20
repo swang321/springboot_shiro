@@ -1,274 +1,647 @@
 {
-    "checked": true,
-    "attributes": null,
-    "children": [
-      {
-        "id": "1",
-        "icon": "zmdi zmdi-settings",
-        "url": null,
+  "_model": {
+    "data": {
+      "#": {
+        "id": "#",
+        "parent": null,
+        "parents": [],
+        "children": [
+          "j1_1",
+          "j1_12"
+        ],
+        "children_d": [
+          "j1_1",
+          "j1_3",
+          "j1_4",
+          "j1_5",
+          "j1_7",
+          "j1_8",
+          "j1_9",
+          "j1_11",
+          "j1_2",
+          "j1_6",
+          "j1_10",
+          "j1_12"
+        ],
+        "state": {
+          "loaded": true,
+          "failed": false,
+          "loading": false
+        }
+      },
+      "j1_3": {
+        "id": "j1_3",
+        "text": "添加用户",
+        "icon": true,
+        "parent": "j1_2",
+        "parents": [
+          "j1_2",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_3"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 4,
+          "url": null,
+          "text": "添加用户",
+          "parentId": 1
+        }
+      },
+      "j1_4": {
+        "id": "j1_4",
+        "text": "删除用户",
+        "icon": true,
+        "parent": "j1_2",
+        "parents": [
+          "j1_2",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_4"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 5,
+          "url": null,
+          "text": "删除用户",
+          "parentId": 1
+        }
+      },
+      "j1_5": {
+        "id": "j1_5",
+        "text": "更新用户",
+        "icon": true,
+        "parent": "j1_2",
+        "parents": [
+          "j1_2",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_5"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 8,
+          "url": null,
+          "text": "更新用户",
+          "parentId": 1
+        }
+      },
+      "j1_2": {
+        "id": "j1_2",
+        "text": "用户管理",
+        "icon": true,
+        "parent": "j1_1",
+        "parents": [
+          "j1_1",
+          "#"
+        ],
+        "children": [
+          "j1_3",
+          "j1_4",
+          "j1_5"
+        ],
+        "children_d": [
+          "j1_3",
+          "j1_4",
+          "j1_5"
+        ],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_2"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 1,
+          "url": "/userPage",
+          "text": "用户管理",
+          "parentId": 10
+        }
+      },
+      "j1_7": {
+        "id": "j1_7",
+        "text": "添加角色",
+        "icon": true,
+        "parent": "j1_6",
+        "parents": [
+          "j1_6",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_7"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 6,
+          "url": null,
+          "text": "添加角色",
+          "parentId": 2
+        }
+      },
+      "j1_8": {
+        "id": "j1_8",
+        "text": "更新角色",
+        "icon": true,
+        "parent": "j1_6",
+        "parents": [
+          "j1_6",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_8"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 21,
+          "url": null,
+          "text": "更新角色",
+          "parentId": 2
+        }
+      },
+      "j1_9": {
+        "id": "j1_9",
+        "text": "删除角色",
+        "icon": true,
+        "parent": "j1_6",
+        "parents": [
+          "j1_6",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_9"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 22,
+          "url": null,
+          "text": "删除角色",
+          "parentId": 2
+        }
+      },
+      "j1_6": {
+        "id": "j1_6",
+        "text": "角色管理",
+        "icon": true,
+        "parent": "j1_1",
+        "parents": [
+          "j1_1",
+          "#"
+        ],
+        "children": [
+          "j1_7",
+          "j1_8",
+          "j1_9"
+        ],
+        "children_d": [
+          "j1_7",
+          "j1_8",
+          "j1_9"
+        ],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_6"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 2,
+          "url": "/rolePage",
+          "text": "角色管理",
+          "parentId": 10
+        }
+      },
+      "j1_11": {
+        "id": "j1_11",
+        "text": "添加权限",
+        "icon": true,
+        "parent": "j1_10",
+        "parents": [
+          "j1_10",
+          "j1_1",
+          "#"
+        ],
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_11"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 7,
+          "url": null,
+          "text": "添加权限",
+          "parentId": 3
+        }
+      },
+      "j1_10": {
+        "id": "j1_10",
+        "text": "权限管理",
+        "icon": true,
+        "parent": "j1_1",
+        "parents": [
+          "j1_1",
+          "#"
+        ],
+        "children": [
+          "j1_11"
+        ],
+        "children_d": [
+          "j1_11"
+        ],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_10"
+        },
+        "a_attr": {
+          "href": "#"
+        },
+        "original": {
+          "permissionId": 3,
+          "url": "/permissionPage",
+          "text": "权限管理",
+          "parentId": 10
+        }
+      },
+      "j1_1": {
+        "id": "j1_1",
         "text": "系统管理",
-        "state": null,
-        "checked": false,
-        "attributes": null,
-        "children": [
-          {
-            "id": "3",
-            "icon": "",
-            "url": "user",
-            "text": "用户管理",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "1",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "4",
-            "icon": "",
-            "url": "role",
-            "text": "角色管理",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "1",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "5",
-            "icon": "",
-            "url": "menu",
-            "text": "菜单管理",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "1",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "6",
-            "icon": "",
-            "url": "dept",
-            "text": "部门管理",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "1",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "64",
-            "icon": "",
-            "url": "dict",
-            "text": "字典管理",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "1",
-            "hasParent": true,
-            "hasChildren": false
-          }
+        "icon": true,
+        "parent": "#",
+        "parents": [
+          "#"
         ],
-        "parentId": "0",
-        "hasParent": false,
-        "hasChildren": true
+        "children": [
+          "j1_2",
+          "j1_6",
+          "j1_10"
+        ],
+        "children_d": [
+          "j1_3",
+          "j1_4",
+          "j1_5",
+          "j1_7",
+          "j1_8",
+          "j1_9",
+          "j1_11",
+          "j1_2",
+          "j1_6",
+          "j1_10"
+        ],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": true,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_1"
+        },
+        "a_attr": {
+          "href": "#",
+          "id": "j1_1_anchor"
+        },
+        "original": {
+          "permissionId": 10,
+          "url": null,
+          "text": "系统管理",
+          "parentId": 0
+        }
       },
-      {
-        "id": "2",
-        "icon": "zmdi zmdi-shield-security",
-        "url": null,
-        "text": "系统监控",
-        "state": null,
-        "checked": false,
-        "attributes": null,
-        "children": [
-          {
-            "id": "8",
-            "icon": "",
-            "url": "session",
-            "text": "在线用户",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "2",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "10",
-            "icon": "",
-            "url": "log",
-            "text": "系统日志",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "2",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "135",
-            "icon": "",
-            "url": "redis/info",
-            "text": "Redis监控",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "2",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "136",
-            "icon": "",
-            "url": "redis/terminal",
-            "text": "Redis终端",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "2",
-            "hasParent": true,
-            "hasChildren": false
-          }
+      "j1_12": {
+        "id": "j1_12",
+        "text": "其他管理",
+        "icon": true,
+        "parent": "#",
+        "parents": [
+          "#"
         ],
-        "parentId": "0",
-        "hasParent": false,
-        "hasChildren": true
-      },
-      {
-        "id": "58",
-        "icon": "zmdi zmdi-globe-alt",
-        "url": null,
-        "text": "网络资源",
-        "state": null,
-        "checked": false,
-        "attributes": null,
-        "children": [
-          {
-            "id": "59",
-            "icon": "",
-            "url": "weather",
-            "text": "天气查询",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "58",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "61",
-            "icon": "",
-            "url": "article",
-            "text": "每日一文",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "58",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "81",
-            "icon": null,
-            "url": null,
-            "text": "影视资讯",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [
-              {
-                "id": "82",
-                "icon": "",
-                "url": "movie/hot",
-                "text": "正在热映",
-                "state": null,
-                "checked": false,
-                "attributes": null,
-                "children": [],
-                "parentId": "81",
-                "hasParent": true,
-                "hasChildren": false
-              },
-              {
-                "id": "83",
-                "icon": "",
-                "url": "movie/coming",
-                "text": "即将上映",
-                "state": null,
-                "checked": false,
-                "attributes": null,
-                "children": [],
-                "parentId": "81",
-                "hasParent": true,
-                "hasChildren": false
-              }
-            ],
-            "parentId": "58",
-            "hasParent": true,
-            "hasChildren": true
-          }
-        ],
-        "parentId": "0",
-        "hasParent": false,
-        "hasChildren": true
-      },
-      {
-        "id": "101",
-        "icon": "zmdi zmdi-alarm",
-        "url": null,
-        "text": "任务调度",
-        "state": null,
-        "checked": false,
-        "attributes": null,
-        "children": [
-          {
-            "id": "102",
-            "icon": "",
-            "url": "job",
-            "text": "定时任务",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "101",
-            "hasParent": true,
-            "hasChildren": false
-          },
-          {
-            "id": "109",
-            "icon": "",
-            "url": "jobLog",
-            "text": "调度日志",
-            "state": null,
-            "checked": false,
-            "attributes": null,
-            "children": [],
-            "parentId": "101",
-            "hasParent": true,
-            "hasChildren": false
-          }
-        ],
-        "parentId": "0",
-        "hasParent": false,
-        "hasChildren": true
+        "children": [],
+        "children_d": [],
+        "data": null,
+        "state": {
+          "loaded": true,
+          "opened": false,
+          "selected": false,
+          "disabled": false
+        },
+        "li_attr": {
+          "id": "j1_12"
+        },
+        "a_attr": {
+          "href": "#",
+          "id": "j1_12_anchor"
+        },
+        "original": {
+          "permissionId": 20,
+          "url": null,
+          "text": "其他管理",
+          "parentId": 0
+        }
       }
+    },
+    "changed": [],
+    "force_full_redraw": false,
+    "redraw_timeout": false,
+    "default_state": {
+      "loaded": true,
+      "opened": false,
+      "selected": false,
+      "disabled": false
+    }
+  },
+  "element": {
+    "0": {
+      "jQuery1111010395572061730873": 96,
+      "sizzle-1545269963986": {
+        "parentNode": [
+          1690,
+          45,
+          true
+        ]
+      }
+    },
+    "context": {
+      "jQuery1111010395572061730873": 96,
+      "sizzle-1545269963986": {
+        "parentNode": [
+          1690,
+          45,
+          true
+        ]
+      }
+    },
+    "length": 1
+  },
+  "settings": {
+    "plugins": [
+      "wholerow",
+      "checkbox"
     ],
-    "parentId": "",
-    "hasParent": false,
-    "hasChildren": true
-  }
+    "core": {
+      "data": [
+        {
+          "permissionId": 10,
+          "url": null,
+          "text": "系统管理",
+          "parentId": 0,
+          "children": [
+            {
+              "permissionId": 1,
+              "url": "/userPage",
+              "text": "用户管理",
+              "parentId": 10,
+              "children": [
+                {
+                  "permissionId": 4,
+                  "url": null,
+                  "text": "添加用户",
+                  "parentId": 1,
+                  "children": null
+                },
+                {
+                  "permissionId": 5,
+                  "url": null,
+                  "text": "删除用户",
+                  "parentId": 1,
+                  "children": null
+                },
+                {
+                  "permissionId": 8,
+                  "url": null,
+                  "text": "更新用户",
+                  "parentId": 1,
+                  "children": null
+                }
+              ]
+            },
+            {
+              "permissionId": 2,
+              "url": "/rolePage",
+              "text": "角色管理",
+              "parentId": 10,
+              "children": [
+                {
+                  "permissionId": 6,
+                  "url": null,
+                  "text": "添加角色",
+                  "parentId": 2,
+                  "children": null
+                },
+                {
+                  "permissionId": 21,
+                  "url": null,
+                  "text": "更新角色",
+                  "parentId": 2,
+                  "children": null
+                },
+                {
+                  "permissionId": 22,
+                  "url": null,
+                  "text": "删除角色",
+                  "parentId": 2,
+                  "children": null
+                }
+              ]
+            },
+            {
+              "permissionId": 3,
+              "url": "/permissionPage",
+              "text": "权限管理",
+              "parentId": 10,
+              "children": [
+                {
+                  "permissionId": 7,
+                  "url": null,
+                  "text": "添加权限",
+                  "parentId": 3,
+                  "children": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "permissionId": 20,
+          "url": null,
+          "text": "其他管理",
+          "parentId": 0,
+          "children": null
+        }
+      ],
+      "strings": false,
+      "check_callback": false,
+      "animation": 200,
+      "multiple": true,
+      "themes": {
+        "name": false,
+        "url": false,
+        "dir": false,
+        "dots": true,
+        "icons": true,
+        "stripes": false,
+        "variant": false,
+        "responsive": false
+      },
+      "expand_selected_onload": true,
+      "worker": true,
+      "force_text": false,
+      "dblclick_toggle": true
+    },
+    "checkbox": {
+      "visible": true,
+      "three_state": false,
+      "whole_node": true,
+      "keep_selected_style": true,
+      "cascade": "",
+      "tie_selection": true
+    },
+    "contextmenu": {
+      "select_node": true,
+      "show_at_node": true
+    },
+    "dnd": {
+      "copy": true,
+      "open_timeout": 500,
+      "is_draggable": true,
+      "check_while_dragging": true,
+      "always_copy": false,
+      "inside_pos": 0,
+      "drag_selection": true,
+      "touch": true,
+      "large_drop_target": false,
+      "large_drag_target": false
+    },
+    "massload": null,
+    "search": {
+      "ajax": false,
+      "fuzzy": false,
+      "case_sensitive": false,
+      "show_only_matches": false,
+      "show_only_matches_children": false,
+      "close_opened_onclear": true,
+      "search_leaves_only": false,
+      "search_callback": false
+    },
+    "state": {
+      "key": "jstree",
+      "events": "changed.jstree open_node.jstree close_node.jstree check_node.jstree uncheck_node.jstree",
+      "ttl": false,
+      "filter": false,
+      "disabled": true
+    },
+    "types": {
+      "default": {},
+      "#": {}
+    },
+    "unique": {
+      "case_sensitive": false
+    }
+  },
+  "_wrk": "blob:http://localhost:8089/506b4c3b-abd8-453b-b29c-25d683a0a418",
+  "_cnt": 12
+}

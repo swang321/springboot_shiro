@@ -18,7 +18,11 @@ public interface RolePermissionMapper {
 
     int updateByPrimaryKey(RolePermission record);
 
-    void deleteRoles(Integer[] roleIds);
+    void deleteRoles(@Param("roleIds") Integer[] roleIds);
 
-    void batchRolePermission(@Param("roleId") Integer roleId,@Param("perms") List<Integer> perms);
+    void batchRolePermission(@Param("roleId") Integer roleId, @Param("perms") List<Integer> perms);
+
+    List<RolePermission> findByRoleId(Integer roleId);
+
+    void batchDeleteRolePermission(@Param("roleId") Integer roleId, @Param("perms") List<Integer> deleteIds);
 }

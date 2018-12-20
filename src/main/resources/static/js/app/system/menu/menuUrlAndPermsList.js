@@ -4,7 +4,7 @@ $(function () {
 
 function initUrlAndPermsList() {
     // urls complete
-    $.getJSON(ctx + "menu/urlList", function (r) {
+    $.getJSON("menu/urlList", function (r) {
         $('#menu-url-list').autocomplete({
             hints: r,
             keyname: 'url',

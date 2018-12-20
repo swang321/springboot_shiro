@@ -10,7 +10,7 @@ function updateMenu() {
         return;
     }
     var menuId = selected[0].id;
-    $.post(ctx + "menu/getMenu", {"menuId": menuId}, function (r) {
+    $.post("menu/getMenu", {"menuId": menuId}, function (r) {
         if (r.code === 0) {
             var $form = $('#menu-add');
             var $menuTree = $('#menuTree');

@@ -2,15 +2,10 @@ var validator;
 var $menuAddForm = $("#menu-add-form");
 var $menuName = $menuAddForm.find("input[name='menuName']");
 var $url = $menuAddForm.find("input[name='url']");
-var $icon = $menuAddForm.find("input[name='icon']");
-var $icon_drop = $menuAddForm.find("div.icon-drop");
-
 var $menuUrlListRow = $menuAddForm.find(".menu-url-list-row");
-var $menuIconListRow = $menuAddForm.find(".menu-icon-list-row");
 var $menuPermsListRow = $menuAddForm.find(".menu-perms-list-row");
 
 $(function () {
-    $icon_drop.hide();
     validateRule();
     createMenuTree();
 
@@ -56,7 +51,7 @@ $(function () {
         var flag = validator.form();
         if (flag) {
             if (name === "save") {
-                $.post(ctx + "menu/add", $menuAddForm.serialize(), function (r) {
+                $.post("menu/add", $menuAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         refresh();
                         closeModal();
@@ -65,7 +60,7 @@ $(function () {
                 });
             }
             if (name === "update") {
-                $.post(ctx + "menu/update", $menuAddForm.serialize(), function (r) {
+                $.post( "menu/update", $menuAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         refresh();
                         closeModal();
@@ -132,9 +127,9 @@ function validateRule() {
 }
 
 function createMenuTree() {
-    $.post(ctx + "menu/tree", {}, function (r) {
+    $.post("permission/loadMenuAll", {}, function (r) {
         if (r.code === 0) {
-            var data = r.msg;
+            var data = r.data;
             $('#menuTree').jstree({
                 "core": {
                     'data': data.children,

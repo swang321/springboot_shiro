@@ -21,6 +21,8 @@ $(function () {
                 });
             }
             if (name === "update") {
+                console.log("$roleAddForm.serialize()"+$roleAddForm.serialize());
+
                 $.post("role/update", $roleAddForm.serialize(), function (r) {
                     if (r.code === 0) {
                         closeModal();
@@ -113,12 +115,10 @@ function createMenuTree() {
 function getMenu() {
     var $menuTree = $('#menuTree');
     var ref = $menuTree.jstree(true);
-    console.log("*******************    "+ref);
     var menuIds = ref.get_checked();
     console.log("---------------------    "+menuIds);
     $menuTree.find(".jstree-undetermined").each(function (i, element) {
         menuIds.push($(element).closest('.jstree-node').attr("id"));
     });
-    console.log("++++++++++++++++++    "+menuIds);
-    $("[name='menuId']").val(menuIds);
+    $("[name='perms']").val(menuIds);
 }

@@ -52,7 +52,6 @@ public class LoginController extends BaseController {
     @RequestMapping("/index")
     public String index(Model model) {
         // 登录成后，即可通过 Subject 获取登录的用户信息
-        Session session = SecurityUtils.getSubject().getSession();
         User user = super.getCurrentUser();
         model.addAttribute("user", user);
         return "index";

@@ -4,6 +4,7 @@ import com.whh.base.common.ServerResponse;
 import com.whh.base.controller.BaseController;
 import com.whh.bean.domin.PageParam;
 import com.whh.bean.dto.AddRoleDTO;
+import com.whh.bean.dto.UpdateRoleDTO;
 import com.whh.bean.pojo.Role;
 import com.whh.service.IRoleService;
 import lombok.extern.slf4j.Slf4j;
@@ -28,14 +29,6 @@ public class RoleController extends BaseController {
     @Autowired
     private IRoleService roleService;
 
-//    @RequestMapping("role/list")
-//    @ResponseBody
-//    public ServerResponse roleList() {
-//        return roleService.allRole();
-
-//    }
-
-
     @RequestMapping("/rolePage")
     @RequiresPermissions("role:list")
     public String index() {
@@ -58,6 +51,19 @@ public class RoleController extends BaseController {
             return ServerResponse.createBySuccessMsg();
         } catch (Exception e) {
             log.error("删除角色失败", e);
+            return ServerResponse.createByErrorMsg();
+        }
+    }
+
+    @RequestMapping("role/update")
+    @RequiresPermissions("role:update")
+    @ResponseBody
+    public ServerResponse updateRoles(UpdateRoleDTO updateRoleDTO) {
+        try {
+            this.roleService.updateRoles(updateRoleDTO);
+            return ServerResponse.createBySuccessMsg();
+        } catch (Exception e) {
+            log.error("更新角色失败", e);
             return ServerResponse.createByErrorMsg();
         }
     }

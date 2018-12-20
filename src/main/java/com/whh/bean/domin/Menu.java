@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
+ * @author admin
  * @Date: 2018/12/14 11:23
  * @Description:
  */
@@ -14,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Menu {
+
+    private Integer id;
 
     private Integer permissionId;
 

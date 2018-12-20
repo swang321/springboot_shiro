@@ -1,19 +1,16 @@
 package com.whh.controller;
 
-import com.whh.bean.domin.Menu;
-import com.whh.bean.pojo.Permission;
-import com.whh.dao.PermissionMapper;
+import com.google.common.collect.Lists;
+import com.whh.bean.pojo.RolePermission;
+import com.whh.dao.RolePermissionMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -26,49 +23,25 @@ import java.util.stream.Collectors;
 public class PermissionControllerTest {
 
     @Autowired
-    private PermissionMapper permissionMapper;
+    private RolePermissionMapper rolePermissionMapper;
 
     @Transactional(rollbackFor = Exception.class)
     @Test
     public void t() {
-        List<Permission> permissions = permissionMapper.findAll();
-        Map<Integer, List<Permission>> permissionMap = permissions.stream().collect(Collectors.groupingBy(t -> t.getParentId()));
-        System.out.println(permissionMap);
-        List<Permission> parent = permissionMap.get(0);
-        Menu menuPermission = new Menu();
-        List<Menu> parentMenu = new ArrayList<>();
-        parent.forEach(t -> {
-            Menu menu = assembleMenu(t);
-            parentMenu.add(menu);
-        });
-        menuPermission.setChildren(parentMenu);
-        permissionMap.remove(0);
-        menuPermission.getChildren().forEach(k -> {
-            findChildrenPermission(k, permissionMap);
-        });
-        System.out.println(menuPermission);
-    }
+        Integer roleId = 10;
 
-    public Menu findChildrenPermission(Menu menu, Map<Integer, List<Permission>> permissionMap) {
-        permissionMap.forEach((k, v) -> {
-            if (menu.getPermissionId().equals(k)) {
-                if (menu.getChildren() == null) {
-                    menu.setChildren(new ArrayList<>());
-                }
-                permissionMap.get(k).forEach(t -> {
-                    Menu menu1 = assembleMenu(t);
-                    menu.getChildren().add(findChildrenPermission(menu1, permissionMap));
-                });
-            }
-        });
-        return menu;
-    }
+        List<Integer> permsIds = Lists.newArrayList(10, 20, 4);
 
-    public Menu assembleMenu(Permission permission) {
-        Menu menu = new Menu();
-        BeanUtils.copyProperties(permission, menu);
-        menu.setText(permission.getPermission());
-        return menu;
+        List<RolePermission> permissions = rolePermissionMapper.findByRoleId(roleId);
+        List<Integer> hadIds = permissions.stream().map(RolePermission::getPermissionId).collect(Collectors.toList());
+        hadIds.forEach(System.out::println);
+
+
+        List<Integer> delete = hadIds.stream().filter(item -> !permsIds.contains(item)).collect(Collectors.toList());
+        delete.forEach(t -> System.out.println("delete" + t));
+
+        List<Integer> insert = permsIds.stream().filter(item -> !hadIds.contains(item)).collect(Collectors.toList());
+        insert.forEach(t -> System.out.println("insert" + t));
     }
 
 }
