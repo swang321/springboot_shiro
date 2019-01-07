@@ -3,6 +3,7 @@ package com.whh.controller;
 import com.google.common.collect.Lists;
 import com.whh.bean.pojo.RolePermission;
 import com.whh.dao.RolePermissionMapper;
+import org.apache.ibatis.annotations.Select;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class PermissionControllerTest {
     @Transactional(rollbackFor = Exception.class)
     @Test
     public void t() {
+
+
+
+
+
         Integer roleId = 10;
 
         List<Integer> permsIds = Lists.newArrayList(10, 20, 4);

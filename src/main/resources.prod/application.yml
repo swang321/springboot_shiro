@@ -1,7 +1,7 @@
 # prod
 
 server:
-  port: 8089
+  port: 8080
 
 logging:
   level:
@@ -19,7 +19,7 @@ spring:
       filters: stat
       driver-class-name: com.mysql.jdbc.Driver
       #配置基本属性
-      url: jdbc:mysql://localhost:3306/swang?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      url: jdbc:mysql://localhost:3306/test_demo_shiro?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
       password: 123456
       #配置初始化大小/最小/最大

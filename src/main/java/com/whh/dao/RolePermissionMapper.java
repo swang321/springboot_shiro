@@ -25,4 +25,5 @@ public interface RolePermissionMapper {
     List<RolePermission> findByRoleId(Integer roleId);
 
     void batchDeleteRolePermission(@Param("roleId") Integer roleId, @Param("perms") List<Integer> deleteIds);
+
 }
