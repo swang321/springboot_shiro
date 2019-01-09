@@ -105,11 +105,11 @@ function validateRule() {
 
 function initRole() {
     $.post("role/list", {}, function (r) {
-        var data = r.data;
+        var data = r.rows;
         var option = "";
-        // for (var i=0;i<data.length;i++){
-        //     option += "<option value='" + data[i].roleId + "'>" + data[i].description + "</option>"
-        // }
+        for (var i=0;i<data.length;i++){
+            option += "<option value='" + data[i].roleId + "'>" + data[i].description + "</option>"
+        }
         $rolesSelect.html("").append(option);
         var options = {
             selectAllText: '所有角色',

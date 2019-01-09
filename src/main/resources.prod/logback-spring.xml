@@ -1,63 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- beta -->
-<configuration>
-    <!-- 配置项，使用ConsoleAppender表示配置的是控制台的输出日志 -->
-    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- 定义日志输出的格式 -->
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>
-                %d - %-4relative [%thread] %-5level %logger{35} - %msg%n
-            </pattern>
-        </layout>
-    </appender>
-
-    <!-- 配置info日志文件 -->
-    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 配置日志过滤，错误日志不写入 -->
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
-            <onMatch>DENY</onMatch>
-            <onMismatch>ACCEPT</onMismatch>
-        </filter>
-        <encoder>
-            <pattern>
-                %d - %-4relative [%thread] %-5level %logger{35} - %msg%n
-            </pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-        <!-- 日志滚动策略 -->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- 日志文件的输出路径 -->
-            <fileNamePattern>C:\whh_logs\test_demo\info.%d.log
-            </fileNamePattern>
-        </rollingPolicy>
-    </appender>
-
-    <!-- 配置error日志文件 -->
-    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 配置日志过滤，仅写入error级别的错误日志 -->
+<configuration scan="true" scanPeriod="10 seconds">
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="/home/zjs/sdk/cpa/logs"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!--过滤日志级别 低于{level}级别的日志将被丢弃-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>ERROR</level>
+            <level>info</level>
         </filter>
         <encoder>
-            <pattern>
-                %d - %-4relative [%thread] %-5level %logger{35} - %msg%n
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %highlight([%thread] %level %file):%line - %msg
+                %replace(%caller{1}){'Caller\+0.*\(','('} %n
             </pattern>
-            <charset>UTF-8</charset>
         </encoder>
-        <!-- 日志滚动策略 -->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- 日志文件的输出路径 -->
-            <fileNamePattern>C:\whh_logs\test_demo\error.%d.log
-            </fileNamePattern>
-        </rollingPolicy>
     </appender>
 
-    <!-- root表示作用于整个项目范围 -->
-    <root level="info">
-        <appender-ref ref="consoleLog"/>
-        <appender-ref ref="fileInfoLog"/>
-        <appender-ref ref="fileErrorLog"/>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}/cpa.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level %file:%line - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>512</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="FILE"/>
+    </appender>
+
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ASYNC"/>
     </root>
 
 </configuration>
