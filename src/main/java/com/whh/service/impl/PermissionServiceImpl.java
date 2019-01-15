@@ -38,7 +38,7 @@ public class PermissionServiceImpl implements IPermissionService {
         map.put("resourceType", 0);
         List<Permission> permissionList = permissionMapper.loadMenu(map);
 
-        Menu menuParens = new Menu();
+        Menu menuParents = new Menu();
         List<Menu> list = new ArrayList<>();
         //先找出父节点
         //    0  表示 parentId
@@ -51,12 +51,12 @@ public class PermissionServiceImpl implements IPermissionService {
                 list.add(menuChildren);
             }
         }
-        menuParens.setChildren(list);
-        for (Menu child : menuParens.getChildren()) {
+        menuParents.setChildren(list);
+        for (Menu child : menuParents.getChildren()) {
             findChildren(child, permissionList);
         }
 
-        return ServerResponse.createBySuccessData(menuParens);
+        return ServerResponse.createBySuccessData(menuParents);
     }
 
     @Override
