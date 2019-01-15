@@ -5,8 +5,6 @@ import com.whh.base.controller.BaseController;
 import com.whh.bean.pojo.User;
 import com.whh.service.ILoginService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +52,7 @@ public class LoginController extends BaseController {
         // 登录成后，即可通过 Subject 获取登录的用户信息
         User user = super.getCurrentUser();
         model.addAttribute("user", user);
+        log.info("login success user:{}", user.getUsername());
         return "index";
     }
 

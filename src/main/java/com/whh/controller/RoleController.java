@@ -26,8 +26,12 @@ import java.util.Map;
 @Controller
 public class RoleController extends BaseController {
 
+    private final IRoleService roleService;
+
     @Autowired
-    private IRoleService roleService;
+    public RoleController(IRoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @RequestMapping("/rolePage")
     @RequiresPermissions("role:list")

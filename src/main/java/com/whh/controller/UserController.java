@@ -24,8 +24,12 @@ import java.util.Map;
 @Controller
 public class UserController extends BaseController {
 
+    private final IUserService userService;
+
     @Autowired
-    private IUserService userService;
+    public UserController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @RequiresPermissions("user:list")
     @RequestMapping("userPage")

@@ -2,9 +2,10 @@ package com.whh.dao;
 
 import com.whh.bean.pojo.UserRole;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public interface UserRoleMapper {
     int deleteByPrimaryKey(Integer id);
 

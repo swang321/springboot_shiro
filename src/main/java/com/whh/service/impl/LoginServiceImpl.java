@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginServiceImpl implements ILoginService {
     @Override
     public ServerResponse login(String username, String password, HttpServletRequest request) {
-        boolean flag = false;
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
           return ServerResponse.createByErrorMsg(ResponseEnum.LOGIN_ERROR);
         }

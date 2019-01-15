@@ -10,6 +10,7 @@ import com.whh.bean.pojo.User;
 import com.whh.dao.UserMapper;
 import com.whh.dao.UserRoleMapper;
 import com.whh.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.List;
  * @Date: 2018/12/11 17:29
  * @Description:
  */
+@Slf4j
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -30,11 +32,15 @@ public class UserServiceImpl implements IUserService {
     private final int ONE = 1;
     private final int ZERO = 0;
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    private final UserRoleMapper userRoleMapper;
 
     @Autowired
-    private UserRoleMapper userRoleMapper;
+    public UserServiceImpl(UserRoleMapper userRoleMapper, UserMapper userMapper) {
+        this.userRoleMapper = userRoleMapper;
+        this.userMapper = userMapper;
+    }
 
     @Override
     public User findByUserName(String username) {
@@ -72,6 +78,7 @@ public class UserServiceImpl implements IUserService {
         }
         userMapper.insertSelective(user);
         userRoleMapper.batchUserRole(user.getUserId(), registerDTO.getRoles());
+        log.info("user is updated success");
         return ServerResponse.createBySuccessMsg();
     }
 

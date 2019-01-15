@@ -1,10 +1,11 @@
 package com.whh.dao;
 
 import com.whh.bean.pojo.Permission;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
-
+@Component
 public interface PermissionMapper {
     int deleteByPrimaryKey(Integer permissionId);
 

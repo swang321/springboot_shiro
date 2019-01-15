@@ -23,14 +23,18 @@ import java.util.stream.Collectors;
  */
 @Service
 public class RoleServiceImpl implements IRoleService {
-    @Autowired
-    private RoleMapper roleMapper;
+    private final RoleMapper roleMapper;
+
+    private final RolePermissionMapper rolePermissionMapper;
+
+    private final UserRoleMapper userRoleMapper;
 
     @Autowired
-    private RolePermissionMapper rolePermissionMapper;
-
-    @Autowired
-    private UserRoleMapper userRoleMapper;
+    public RoleServiceImpl(RoleMapper roleMapper, RolePermissionMapper rolePermissionMapper, UserRoleMapper userRoleMapper) {
+        this.roleMapper = roleMapper;
+        this.rolePermissionMapper = rolePermissionMapper;
+        this.userRoleMapper = userRoleMapper;
+    }
 
     @Override
     public List<Role> findAllRole(Role role) {

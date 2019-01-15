@@ -12,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author admin
@@ -25,8 +23,12 @@ import java.util.Map;
 @Controller
 public class PermissionController extends BaseController {
 
+    private final IPermissionService permissionService;
+
     @Autowired
-    private IPermissionService permissionService;
+    public PermissionController(IPermissionService permissionService) {
+        this.permissionService = permissionService;
+    }
 
     @RequestMapping("/permission/loadMenu")
     @ResponseBody
@@ -36,7 +38,7 @@ public class PermissionController extends BaseController {
 
     @RequestMapping("/permission/loadMenuAll")
     @ResponseBody
-    public ServerResponse<Menu> loadMenuAll(){
+    public ServerResponse<Menu> loadMenuAll() {
         return permissionService.loadMenuAll();
     }
 
