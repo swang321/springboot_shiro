@@ -30,13 +30,10 @@
         <weixin-popular.version>2.8.22</weixin-popular.version>
         <guava.version>20.0</guava.version>
         <commons-codec.version>1.9</commons-codec.version>
-<<<<<<< Updated upstream
-=======
 
 
         <docker.image.prefix>springboot</docker.image.prefix>
 
->>>>>>> Stashed changes
     </properties>
 
     <dependencies>
